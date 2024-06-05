@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Royal Tutorials -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -35,6 +34,37 @@
         </form>
     </div>
 
+    <script>
+        // Simpan URL tujuan sebelum login
+        var targetUrl = window.location.href;
+
+        // Periksa apakah pengguna telah login saat memuat halaman
+        window.onload = function() {
+            // Simulasikan status login, misalnya:
+            var isLoggedIn = false; // Ganti dengan logika login Anda
+
+            // Jika pengguna belum login dan tidak berada di halaman index.html, redirect ke halaman login
+            if (!isLoggedIn && !isIndexPage()) {
+                window.location.href = "index.html";
+            }
+        };
+
+        // Jika pengguna login berhasil, arahkan kembali ke URL tujuan
+        function loginSuccess() {
+            // Simulasikan login berhasil
+            var isLoggedIn = true; // Ganti dengan logika login Anda
+
+            // Jika pengguna berhasil login, arahkan kembali ke URL tujuan
+            if (isLoggedIn) {
+                window.location.href = targetUrl;
+            }
+        }
+
+        // Fungsi untuk memeriksa apakah pengguna berada di halaman index.html
+        function isIndexPage() {
+            return window.location.pathname.endsWith("index.html");
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
