@@ -25,14 +25,48 @@ const users = [
     // Tambahkan user dan password lainnya di sini
 ];
 
+// Fungsi untuk memeriksa apakah pengguna ada dalam database
+function authenticateUser(username, password) {
+    return users.find(user => user.username === username && user.password === password);
+}
+
+// Fungsi untuk mengarahkan pengguna ke halaman yang sesuai setelah login
+function redirectToPage(page) {
+    window.location.href = page;
+}
+
+// Fungsi untuk memeriksa apakah pengguna telah login saat mencoba mengakses halaman tertentu
+function checkLoggedIn() {
+    const currentPage = window.location.pathname.split('/').pop(); // Ambil bagian terakhir dari path URL
+    const username = sessionStorage.getItem("username");
+    const password = sessionStorage.getItem("password");
+    
+    // Jika pengguna sudah login, arahkan sesuai halaman yang ditentukan
+    if (username && password) {
+        const user = authenticateUser(username, password);
+        if (user) {
+            redirectToPage(user.redirectTo);
+        }
+    } 
+    // Jika pengguna belum login dan bukan di halaman index.html, arahkan ke index.js
+    else if (currentPage !== "index.html") {
+        window.location.href = "index.html";
+    }
+}
+
+// Panggil fungsi checkLoggedIn() ketika halaman dimuat
+checkLoggedIn();
+
 document.querySelector('form').addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.querySelector('input[type="text"]').value;
     const password = document.querySelector('input[type="password"]').value;
 
-    const user = users.find(u => u.username === username && u.password === password);
+    const user = authenticateUser(username, password);
     if (user) {
-        window.location.href = user.redirectTo; // Arahkan ke halaman yang sesuai
+        sessionStorage.setItem("username", username); // Simpan username di sessionStorage
+        sessionStorage.setItem("password", password); // Simpan password di sessionStorage
+        redirectToPage(user.redirectTo); // Arahkan ke halaman yang sesuai
     } else {
         alert('Username atau password salah');
     }
