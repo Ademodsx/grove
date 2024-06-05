@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.login-box{
+    position: absolute;
+    width: 400px;
+    padding: 40px;
+    background-color: rgba(165,165,165,0.15);
+    border: 2px solid rgba(255,255,255,0.107);
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+}
+.login-box .inputBox{
+    position: relative;
+}
+.login-box .inputBox input{
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+}
+.login-box .inputBox label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s ease;
+}
+.login-box .inputBox input:focus ~ label,
+.login-box .inputBox input:valid ~ label{
+    top: -20px;
+    left: 0;
+    color: #fff;
+    font-size: 12px;
+}
+.login-box form input[type="submit"]{
+    position: relative;
+    margin: 0 auto;
+    display: inline-block;
+    padding: 10px 120px;
+    margin-top: 50px;
+    font-size: 16px;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid #fff;
+    transition: 0.5s ease;
+}
+.login-box form input[type="submit"]:hover{
+    background-color: transparent;
+    color: #fff;
+}
+.remember{
+    color: #fff;
+}
+input[type="checkbox"]{
+    margin-right: 10px;
+}
+
+/* Style untuk login-box */
+.login-box {
+    position: relative;
+    width: 300px;
+    margin: auto;
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* Gaya untuk judul */
+.animated-title {
+    font-size: 30px;
+    color: green; /* Warna merah */
+    animation: flow 2s infinite alternate; /* Animasi mengalir dengan warna merah */
+}
+
+/* Animasi untuk judul */
+@keyframes flow {
+    0% {
+        color: green;
+    }
+    50% {
+        color: white;
+    }
+    100% {
+        color: green;
+    }
+}
+
+/* Gaya untuk container judul */
+.title-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mengurangi ukuran teks di dalam login-box */
+.login-box .inputBox input,
+.login-box .inputBox label {
+    font-size: 13px; /* Atur ukuran font sesuai kebutuhan */
+}
+
+/* Menyesuaikan ukuran login-box */
+.login-box {
+    position: absolute;
+    width: 80%; /* Sesuaikan dengan kebutuhan */
+    max-width: 400px; /* Batasi lebar maksimum */
+    height: auto; /* Atur ketinggian agar sesuai dengan konten */
+    top: 50%; /* Posisi vertikal di tengah layar */
+    left: 50%; /* Posisi horizontal di tengah layar */
+    transform: translate(-50%, -50%); /* Membuat posisi tepat di tengah */
+    padding: 40px;
+    background-color: rgba(165,165,165,0.15);
+    border: 2px solid rgba(255,255,255,0.107);
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+}
+
+/* Menyesuaikan ukuran tombol */
+.login-box form input[type="submit"] {
+    width: 100%; /* Lebar tombol mengisi seluruh lebar login-box */
+    padding: 15px; /* Atur padding tombol */
+    font-size: 16px; /* Atur ukuran font tombol */
+    margin-top: 30px; /* Atur jarak antara tombol dengan input fields */
+}
